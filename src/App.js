@@ -57,27 +57,39 @@ function App() {
     } else {
       setfilterData([]);
     }
+    if (event.target.value.length === 0) {
+      setfilterData(Data?.customers);
+    }
   };
 
   const HandleSearchAmounts = (event) => {
-    setSeachTransactionAmount(event.target.value);
-    const filterCustomars = [];
-    const filteredAmounts = Data?.transactions?.filter(
-      (item) => item.amount == event.target.value
-    );
-    filteredAmounts.map((transactionData) => {
-      Data?.customers?.map((item) => {
-        if (item.id === transactionData.customer_id) {
-          filterCustomars.push(item);
-        }
-      });
-    });
+    const ReqextNumber = /[0-9]+([0-9])*$/;
 
-    if (filterCustomars.length != 0) {
-      setfilterData(filterCustomars);
-    } else {
-      setfilterData([]);
+    if (ReqextNumber.test(event.target.value)) {
+      setSeachTransactionAmount(event.target.value);
+      const filterCustomars = [];
+      const filteredAmounts = Data?.transactions?.filter(
+        (item) => item.amount == event.target.value
+      );
+      filteredAmounts.map((transactionData) => {
+        Data?.customers?.map((item) => {
+          if (item.id === transactionData.customer_id) {
+            filterCustomars.push(item);
+          }
+        });
+      });
+
+      if (filterCustomars.length != 0) {
+        setfilterData(filterCustomars);
+      } else {
+        setfilterData([]);
+      }
+
+      if (event.target.value.length === 0) {
+        setfilterData(Data?.customers);
+      }
     }
+    
   };
 
   const HandleClickRow = (data) => {
