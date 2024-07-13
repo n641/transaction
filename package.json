@@ -1,7 +1,7 @@
 {
   "name": "job-fair-app",
   "version": "0.1.0",
-  "homepage": "https://n641.github.io/react-gh-pages",
+  "homepage": "https://n641.github.io/transaction",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
