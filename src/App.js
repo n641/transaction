@@ -63,7 +63,7 @@ function App() {
   };
 
   const HandleSearchAmounts = (event) => {
-    const ReqextNumber = /[0-9]+([0-9])*$/;
+    const ReqextNumber = /[ 0-9]+([0-9])*$/;
 
     if (ReqextNumber.test(event.target.value)) {
       setSeachTransactionAmount(event.target.value);
